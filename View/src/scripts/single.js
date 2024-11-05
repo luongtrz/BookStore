@@ -66,7 +66,7 @@ const book = await response.json();
 
 if (book) {
   document.getElementById("book-title").innerText = `Sách: ${book.title}`;
-  document.getElementById("book-image").src = `../book-data/${book.image}`;
+  document.getElementById("book-image").src = `${book.image}`;
   document.getElementById("book-author").innerText = `Tác giả: ${book.author}`;
   document.getElementById("book-description").innerText = book.description;
   document.getElementById("book-company").innerText = `Nhà xuất bản: ${book.company}`;

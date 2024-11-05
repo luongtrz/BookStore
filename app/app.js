@@ -57,6 +57,18 @@ app.get('/books/:id', async (req, res) => {
   }
 });
 
+
+// Route lấy danh sách các thể loại từ collection 'books'
+app.get('/genres', async (req, res) => {
+  try {
+    const genres = await db.collection('books').distinct('genre'); // Lấy tất cả các thể loại không trùng lặp
+    res.send(genres);
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});
+
+
 // Khởi động server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
