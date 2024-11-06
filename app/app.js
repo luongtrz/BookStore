@@ -8,6 +8,11 @@ const app = express();
 app.use(cors());
 
 
+app.use((req, res, next) => {
+  res.setHeader("Content-Security-Policy", "default-src 'self'; script-src 'self'");
+  next();
+});
+
 // ----------------------bảo mật dữ liệu---------------------------
 // require('dotenv').config(); // Thêm dòng này để nạp các biến môi trường
 
