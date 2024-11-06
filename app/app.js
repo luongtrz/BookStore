@@ -62,15 +62,16 @@ app.get('/books/:id', async (req, res) => {
 });
 
 
-// Route lấy danh sách các thể loại từ collection 'books'
 app.get('/genres', async (req, res) => {
   try {
-    const genres = await db.collection('books').distinct('genre'); // Lấy tất cả các thể loại không trùng lặp
-    res.send(genres);
+    const genres = await db.collection('books').distinct('genre');
+    res.status(200).send(genres);
   } catch (error) {
-    res.status(500).send(error);
+    console.error("Error fetching genres:", error);  // Log lỗi chi tiết
+    res.status(500).send({ message: "Internal Server Error", error: error.message });  // Trả về lỗi chi tiết hơn
   }
 });
+
 
 
 
