@@ -64,13 +64,16 @@ app.get('/books/:id', async (req, res) => {
 
 app.get('/genres', async (req, res) => {
   try {
-    const genres = await db.collection('books').distinct('genre'); // Lấy tất cả các thể loại không trùng lặp
-    res.json(genres);  // Trả về kết quả dưới dạng JSON
+    const books = await db.collection('books').find().toArray(); // Lấy tất cả dữ liệu sách
+    console.log(books); // In ra tất cả sách để kiểm tra trường genre
+    const genres = await db.collection('books').distinct('genre');
+    res.status(200).json(genres);
   } catch (error) {
-    console.error("Error fetching genres:", error);  // Log lỗi chi tiết
-    res.status(500).json({ message: "Internal Server Error", error: error.message });  // Trả về lỗi chi tiết
+    console.error('Error fetching genres:', error);
+    res.status(500).json({ message: "Internal Server Error", error: error.message });
   }
 });
+
 
 
 
