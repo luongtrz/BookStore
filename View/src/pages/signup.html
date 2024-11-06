@@ -19,13 +19,14 @@
             >
           </div>
 
-          <form action="#">
+          <form action="http://127.0.0.1:5000/register" method="post" id="signupForm">
             <div class="form-group">
-              <label for="name" class="form-label">Full Name</label>
+              <label for="name" class="form-label" id="">Full Name</label>
               <input
                 type="text"
-                id="name"
+                id="fullName"
                 class="form-control"
+                name="fullName"
                 placeholder="Your Full Name"
               />
             </div>
@@ -35,6 +36,7 @@
                 type="email"
                 id="email"
                 class="form-control"
+                name="email"
                 placeholder="Your Email Address"
               />
             </div>
@@ -44,6 +46,7 @@
                 type="password"
                 id="password"
                 class="form-control"
+                name="password"
                 placeholder="Your Password"
               />
             </div>
@@ -53,6 +56,14 @@
               value="Sign Up"
             />
           </form>
+
+          <p id="message" class="text-xl m-3"></p>
+
+          <!-- thông báo đăng kí -->
+          <div id="notification" class="notification" style="display: none;">
+            <span id="notification-message"></span>
+            <!--  -->
+          </div>
         </div>
       </div>
 
@@ -105,4 +116,5 @@
       </div>
     </div>
   </div>
+  <script src="scripts/signup.js"></script>
 </section>

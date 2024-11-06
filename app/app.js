@@ -8,6 +8,10 @@ const app = express();
 app.use(cors());
 
 
+app.use((req, res, next) => {
+  res.setHeader("Content-Security-Policy", "default-src 'self'; script-src 'self'");
+  next();
+});
 
 // ----------------------bảo mật dữ liệu---------------------------
 // require('dotenv').config(); // Thêm dòng này để nạp các biến môi trường
@@ -65,6 +69,41 @@ app.get('/genres', async (req, res) => {
     res.send(genres);
   } catch (error) {
     res.status(500).send(error);
+  }
+});
+
+
+
+// Xử lý JSON từ request body
+app.use(express.json());
+
+// Route đăng ký
+app.post('/register', async (req, res) => {
+  const { fullName, email, password } = req.body;
+  console.log(req.body);
+
+  try {
+      // Kiểm tra nếu email đã tồn tại
+      console.log("Email đang kiểm tra:", email);
+      
+      const existingUser = await db.collection('users').findOne({ email });
+
+      if (existingUser) {
+          return res.status(400).json({ message: "Email đã tồn tại" });
+      }
+
+      // Tạo mới người dùng và lưu vào database
+      const newUser = {
+          fullName,
+          email,
+          password
+      };
+      await db.collection('users').insertOne(newUser);
+
+      res.status(201).json({ message: "Đăng ký thành công!" });
+  } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: "Có lỗi xảy ra" });
   }
 });
 
