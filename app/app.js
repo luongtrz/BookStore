@@ -62,15 +62,16 @@ app.get('/books/:id', async (req, res) => {
 });
 
 
-// Route lấy danh sách các thể loại từ collection 'books'
 app.get('/genres', async (req, res) => {
   try {
     const genres = await db.collection('books').distinct('genre'); // Lấy tất cả các thể loại không trùng lặp
-    res.send(genres);
+    res.json(genres);  // Trả về kết quả dưới dạng JSON
   } catch (error) {
-    res.status(500).send(error);
+    console.error("Error fetching genres:", error);  // Log lỗi chi tiết
+    res.status(500).json({ message: "Internal Server Error", error: error.message });  // Trả về lỗi chi tiết
   }
 });
+
 
 
 
@@ -112,8 +113,8 @@ app.post('/register', async (req, res) => {
 const PORT = process.env.PORT || 5000;
 
 //open comment to run on local
-// app.listen(PORT, () => {
-//   console.log(`Server is running on port http://127.0.0.1:${PORT}`);
-// });
+app.listen(PORT, () => {
+  console.log(`Server is running on port http://127.0.0.1:${PORT}`);
+});
 
 module.exports = app;
