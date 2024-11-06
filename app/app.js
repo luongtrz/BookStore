@@ -110,6 +110,10 @@ app.post('/register', async (req, res) => {
 
 // Khởi động server
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`Server is running on port http://127.0.0.1:${PORT}`);
-});
+
+//open comment to run on local
+// app.listen(PORT, () => {
+//   console.log(`Server is running on port http://127.0.0.1:${PORT}`);
+// });
+
+module.exports = app;
