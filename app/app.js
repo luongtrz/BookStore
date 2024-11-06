@@ -64,15 +64,22 @@ app.get('/books/:id', async (req, res) => {
 
 app.get('/genres', async (req, res) => {
   try {
-    const books = await db.collection('books').find().toArray(); // Lấy tất cả dữ liệu sách
-    console.log(books); // In ra tất cả sách để kiểm tra trường genre
-    const genres = await db.collection('books').distinct('genre');
-    res.status(200).json(genres);
+    const books = await db.collection('books').find().toArray();
+    const genres = [];
+
+    books.forEach(book => {
+      if (book.genre && !genres.includes(book.genre)) {
+        genres.push(book.genre);
+      }
+    });
+
+    res.status(200).json(genres);  // Trả về danh sách thể loại
   } catch (error) {
     console.error('Error fetching genres:', error);
     res.status(500).json({ message: "Internal Server Error", error: error.message });
   }
 });
+
 
 
 
