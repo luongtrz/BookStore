@@ -155,7 +155,7 @@ async function fetchOtherBooks(genre) {
 async function fetchGenres() {
     try {
         const response = await fetch('https://book-store-app-git-main-luongtrzs-projects.vercel.app/genres'); // Gọi API lấy thể loại từ database
-        console.log(response.json() + "response");
+        
         const Genres = await response.json(); // Chuyển đổi dữ liệu về JSON
         console.log(Genres + "Genres");
 
