@@ -184,9 +184,9 @@ async function fetchGenres() {
 
 
 // Gọi các hàm khi trang được load
-window.onload = () => {
-    fetchGenres();
-    fetchPopularBooks();
+window.onload = async () => {
+    await fetchGenres();
+    await fetchPopularBooks();
 };
 
 
@@ -216,4 +216,3 @@ window.addEventListener('DOMContentLoaded', () => {
     // Gọi hàm fetchOtherBooks với thể loại đã lấy
     fetchOtherBooks(genre);
 });
-
