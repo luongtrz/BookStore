@@ -22,12 +22,20 @@ app.use((req, res, next) => {
 // -------------------------------------------------
 
 // Chuỗi kết nối MongoDB
-const uri = 'mongodb+srv://luongtrz:luongtrzpass@book.hrsim.mongodb.net/BookStore?retryWrites=true&w=majority';
-const client = new MongoClient(uri);
+const uri = 'mongodb+srv://luongtrz:luongtrzpass@book.hrsim.mongodb.net/BookStore';
+const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
 let db;
 
 
+client.connect()
+  .then(() => {
+    db = client.db('BookStore');
+    console.log('Connected to MongoDB Atlas');
+  })
+  .catch((error) => {
+    console.error('Error connecting to MongoDB Atlas:', error);
+  });
 
 // Route lấy danh sách sách
 app.get('/books', async (req, res) => {
@@ -115,19 +123,9 @@ app.post('/register', async (req, res) => {
 // Khởi động server
 const PORT = process.env.PORT || 5000;
 
-client.connect()
-  .then(() => {
-    db = client.db('BookStore');
-    console.log('Connected to MongoDB Atlas');
-    //open comment to run on local
-    app.listen(PORT, () => {
-      console.log(`Server is running on port http://127.0.0.1:${PORT}`);
-    });
-  })
-  .catch((error) => {
-    console.error('Error connecting to MongoDB Atlas:', error);
-  });
-
-
+//open comment to run on local
+app.listen(PORT, () => {
+  console.log(`Server is running on port http://127.0.0.1:${PORT}`);
+});
 
 module.exports = app;
