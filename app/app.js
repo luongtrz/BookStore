@@ -27,14 +27,7 @@ const client = new MongoClient(uri);
 
 let db;
 
-client.connect()
-  .then(() => {
-    db = client.db('BookStore');
-    console.log('Connected to MongoDB Atlas');
-  })
-  .catch((error) => {
-    console.error('Error connecting to MongoDB Atlas:', error);
-  });
+
 
 // Route lấy danh sách sách
 app.get('/books', async (req, res) => {
@@ -122,9 +115,19 @@ app.post('/register', async (req, res) => {
 // Khởi động server
 const PORT = process.env.PORT || 5000;
 
-//open comment to run on local
-app.listen(PORT, () => {
-  console.log(`Server is running on port http://127.0.0.1:${PORT}`);
-});
+client.connect()
+  .then(() => {
+    db = client.db('BookStore');
+    console.log('Connected to MongoDB Atlas');
+    //open comment to run on local
+    app.listen(PORT, () => {
+      console.log(`Server is running on port http://127.0.0.1:${PORT}`);
+    });
+  })
+  .catch((error) => {
+    console.error('Error connecting to MongoDB Atlas:', error);
+  });
+
+
 
 module.exports = app;
