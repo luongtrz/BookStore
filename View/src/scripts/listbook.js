@@ -4,8 +4,6 @@ async function fetchPopularBooks() {
         const books = await response.json(); // Lấy JSON từ API
 
         let bookItemsHTML = '';
-
-        // Take the first 4 elements of books
         const firstFourBooks = books.slice(0, 4);
 
         //random genre
