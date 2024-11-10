@@ -8,22 +8,22 @@
 │   ├── package.json       
 │   └── README.md          
 └── view               :frontend     
-        ├── .vscode            
-        ├── node_modules       
-        ├── src                
-        |── theme              
-        ├── .editorconfig          
-        ├── .gitignore             
-        ├── .jshintrc              
-        ├── gulpfile.js            
-        ├── LICENSE                
-        ├── netlify.toml           
-        ├── package-lock.json      
-        ├── package.json           
-        ├── README.md              
-        ├── tailwind.config.js     
-        ├── vercel-build.sh        
-        └── vercel.json        
+│   ├── .vscode            
+│   ├── node_modules       
+│   ├── src                
+│   |── theme              
+│   ├── .editorconfig          
+│   ├── .gitignore             
+│   ├── .jshintrc              
+│   ├── gulpfile.js            
+│   ├── LICENSE                
+│   ├── netlify.toml           
+│   ├── package-lock.json      
+│   ├── package.json           
+│   ├── README.md              
+│   ├── tailwind.config.js     
+│   ├── vercel-build.sh        
+│   └── vercel.json        
 
 
 Node.js (ver >= 14.x)
@@ -36,6 +36,7 @@ npm install
 
 cd app
 npm start //host in port 5000
+or npm run dev (node moon)
 
 # Frontend: 
 cd ../view
