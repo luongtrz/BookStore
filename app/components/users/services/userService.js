@@ -1,4 +1,4 @@
-// components/users/userService.js
+// components/users/services/userService.js
 const User = require('../../../models/User');
 
 const registerUser = async (userData) => {
