@@ -36,7 +36,7 @@ npm install
 
 cd app
 npm start //host in port 5000
-or npm run dev (node moon)
+or npm run dev (nodemon)
 
 # Frontend: 
 cd ../view
