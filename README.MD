@@ -1,52 +1,19 @@
-# Structure
-├── app                :backend         
-│   ├── node_modules       
-│   ├── .env               
-│   ├── .gitignore         
-│   ├── app.js             :use mongoDB, express, cors
-│   ├── package-lock.json  
-│   ├── package.json       
-│   └── README.md          
-└── view               :frontend     
-│   ├── .vscode            
-│   ├── node_modules       
-│   ├── src                
-│   |── theme              
-│   ├── .editorconfig          
-│   ├── .gitignore             
-│   ├── .jshintrc              
-│   ├── gulpfile.js            
-│   ├── LICENSE                
-│   ├── netlify.toml           
-│   ├── package-lock.json      
-│   ├── package.json           
-│   ├── README.md              
-│   ├── tailwind.config.js     
-│   ├── vercel-build.sh        
-│   └── vercel.json        
-
-
 Node.js (ver >= 14.x)
-Gulp to build
-Netlify or Vercel
+Vercel
 
 # Backend: 
 cd app
 npm install
 
-cd app
-npm start //host in port 5000
+host in port 5000
 or npm run dev (nodemon)
+
+GET /api/books: Get all books
+GET /api/books/:id: Get a book by ID
+GET /api/genres: Get all genres
+POST /api/users/register: Register a new user
 
 # Frontend: 
 cd ../view
 npm install
-
-cd ../view
 npm run dev / npm run build // host in port 3000
-
-Netlify
-Netlify.toml to deploy on Netlify.
-
-Vercel
-Vercel.json and script vercel-build.sh to deploy on Vercel.
