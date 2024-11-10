@@ -12,7 +12,7 @@ document.getElementById("signupForm").addEventListener("submit", async function(
     console.log(password);
 
     try {
-        const response = await fetch("https://book-store-app-git-main-luongtrzs-projects.vercel.app/register", {
+        const response = await fetch("https://book-store-app-git-main-luongtrzs-projects.vercel.app/api/users/register", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
