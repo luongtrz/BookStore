@@ -56,7 +56,7 @@ async function loadBookDetails() {
 const bookId = getBookIdFromUrl();
 console.log(bookId + "bookId");
 
-const response = await fetch(`https://book-store-app-git-main-luongtrzs-projects.vercel.app/books/${bookId}`); // Đường dẫn đến API, thay đổi khi nộp bài, tạm thời host ở port 5000
+const response = await fetch(`https://book-store-app-git-main-luongtrzs-projects.vercel.app/api/books/${bookId}`); // Đường dẫn đến API, thay đổi khi nộp bài, tạm thời host ở port 5000
 if (!response.ok) {
   document.getElementById("book-container").innerText = "Book not found";
   return;
