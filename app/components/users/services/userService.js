@@ -1,17 +1,17 @@
-// components/users/services/userService.js
-const connectToDatabase = require('../../../config/database');
+// components/users/userService.js
+const User = require('../../../models/User');
 
-async function findUserByEmail(email) {
-  const db = await connectToDatabase();
-  return await db.collection('users').findOne({ email });
-}
+const registerUser = async (userData) => {
+  const user = new User(userData);
+  await user.save();
+  return user;
+};
 
-async function registerUser(newUser) {
-  const db = await connectToDatabase();
-  await db.collection('users').insertOne(newUser);
-}
+const findUserByEmail = async (email) => {
+  return await User.findOne({ email });
+};
 
 module.exports = {
-  findUserByEmail,
   registerUser,
+  findUserByEmail
 };

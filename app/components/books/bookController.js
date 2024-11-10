@@ -1,30 +1,39 @@
 // components/books/bookController.js
 const bookService = require('./services/bookService');
 
-exports.getBooks = async (req, res) => {
+const getBooks = async (req, res) => {
   try {
     const books = await bookService.getAllBooks();
-    res.send(books);
+    res.json(books);
   } catch (error) {
-    res.status(500).send(error);
+    res.status(500).json({ message: 'Error fetching books', error: error.message });
   }
 };
 
-exports.getBookById = async (req, res) => {
+const getBookById = async (req, res) => {
   try {
     const book = await bookService.getBookById(req.params.id);
-    if (book) res.send(book);
-    else res.status(404).send({ message: 'Book not found' });
+    if (book) {
+      res.json(book);
+    } else {
+      res.status(404).json({ message: 'Book not found' });
+    }
   } catch (error) {
-    res.status(500).send(error);
+    res.status(500).json({ message: 'Error fetching book', error: error.message });
   }
 };
 
-exports.getGenres = async (req, res) => {
+const getGenres = async (req, res) => {
   try {
     const genres = await bookService.getGenres();
-    res.status(200).json(genres);
+    res.json(genres);
   } catch (error) {
-    res.status(500).json({ message: "Internal Server Error", error: error.message });
+    res.status(500).json({ message: 'Error fetching genres', error: error.message });
   }
+};
+
+module.exports = {
+  getBooks,
+  getBookById,
+  getGenres
 };

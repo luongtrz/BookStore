@@ -1,17 +1,16 @@
-// config/database.js
-const { MongoClient } = require('mongodb');
+// database.js
+const mongoose = require('mongoose');
 
 const uri = process.env.MONGODB_URI || 'mongodb+srv://luongtrz:luongtrzpass@book.hrsim.mongodb.net/BookStore';
-let db;
 
-async function connectToDatabase() {
-  if (!db) {
-    const client = new MongoClient(uri);  // Không cần `useNewUrlParser` và `useUnifiedTopology`
-    await client.connect();
-    db = client.db('BookStore');
-    console.log('Connected to MongoDB Atlas');
+const connectDB = async () => {
+  try {
+    await mongoose.connect(uri);
+    console.log('Connected to MongoDB');
+  } catch (error) {
+    console.error('Error connecting to MongoDB:', error);
+    process.exit(1); // Exit process with failure
   }
-  return db;
-}
+};
 
-module.exports = connectToDatabase;
+module.exports = connectDB;

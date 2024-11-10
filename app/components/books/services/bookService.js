@@ -1,23 +1,20 @@
 // components/books/services/bookService.js
-const connectToDatabase = require('../../../config/database');
+const Book = require('../../../models/Book');
 
-async function getAllBooks() {
-  const db = await connectToDatabase();
-  return await db.collection('books').find().toArray();
-}
+const getAllBooks = async () => {
+  return await Book.find();
+};
 
-async function getBookById(id) {
-  const db = await connectToDatabase();
-  return await db.collection('books').findOne({ id });
-}
+const getBookById = async (id) => {
+  return await Book.findOne({ id });
+};
 
-async function getGenres() {
-  const db = await connectToDatabase();
-  return await db.collection('books').distinct('genre');
-}
+const getGenres = async () => {
+  return await Book.distinct('genre');
+};
 
 module.exports = {
   getAllBooks,
   getBookById,
-  getGenres,
+  getGenres
 };
