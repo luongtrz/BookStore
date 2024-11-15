@@ -17,3 +17,5 @@ POST /api/users/register: Register a new user
 cd ../view
 npm install
 npm run dev / npm run build // host in port 3000
+
+#dev in master branch
