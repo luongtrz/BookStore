@@ -201,7 +201,7 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
         // Gán class 'filter-btn-active' cho nút được nhấp
         this.classList.add('filter-btn-active');
 
-        const genre = this.textContent.trim(); // Lấy tên thể loại từ nội dung văn bản
+        const genre = this.textContent.trim(); // Lấy   
         window.location.href = `list-book.html?genre=${encodeURIComponent(genre)}`; // Điều hướng trang với query string
     });
 });
