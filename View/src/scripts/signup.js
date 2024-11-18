@@ -9,7 +9,6 @@ document.getElementById("signupForm").addEventListener("submit", async function(
     console.log(email);
 
     const password = document.getElementById("password").value;
-    console.log(password);
 
     try {
         const response = await fetch("https://book-store-app-git-main-luongtrzs-projects.vercel.app/api/users/register", {
