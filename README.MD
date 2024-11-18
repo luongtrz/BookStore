@@ -14,6 +14,8 @@ GET /api/genres: Get all genres
 POST /api/users/register: Register a new user
 
 # Frontend: 
+view: dev in src and build to theme with auto reload 'npm run dev'
+
 cd ../view
 npm install
 npm run dev / npm run build // host in port 3000
